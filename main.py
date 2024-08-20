@@ -8,10 +8,9 @@ from random import SystemRandom
 def main():
     tips = 0
     attemps = 0
-    random = SystemRandom()
-    chosen_number = random.randint(0, 100)
+    randint, choice = SystemRandom().randint, SystemRandom().choice
+    secret_number = randint(0, 100)
     print('∎∎∎  WELCOME TO THE GUESSING GAME!! ∎∎∎')
-    print('\n')
     print('Try to guess the number I\'m thinking, between 0-100')
     while True:
         guess = input('Type your guess: ')
@@ -20,34 +19,32 @@ def main():
             break
         if not guess.isdigit():
             # Adding some type of randomness in the prhases to make the game less bored
-            print(
-                random.choice([
+            print(choice([
                     'Type a valid number...Please', 
                     'Be more careful, when typing numbers so that letters don\'t come together',
                     'I asked a number, not a crazy message!'
-                ])
-            )
+            ]))
             continue
         
-        if int(guess) < chosen_number:
-            print(random.choice([
+        if int(guess) < secret_number:
+            print(choice([
                 'Nop, the number is Higher!!',
                 'It is close! The number is Greater',
                 'Almost, the number is Greater than that'
             ]))
-        elif int(guess) > chosen_number:
-            print(random.choice([
+        elif int(guess) > secret_number:
+            print(choice([
                 'Nah, the number is Lower!! Haha!',
                 'It passed by barely! The number is Lesser',
                 'Almost, the number is Lesser than that'
             ]))
         else:
-            congrats = random.choice(['CONGRATS', 'WELL DONE', 'AMAZING'])
+            congrats = choice(['CONGRATS', 'WELL DONE', 'AMAZING'])
             print(f'{congrats}!! You Guessed it in {attemps} Attemps!!')
             guess = input('Would you like to play again? (Yes/No): ')
             if guess.lower() in ('yes', 'y'):
                 attemps = 0
-                chosen_number = random.randint(0, 100)
+                secret_number = randint(0, 100)
                 print('Try to guess the number I\'m thinking, between 0-100')
                 continue
             else:
@@ -56,7 +53,7 @@ def main():
         if attemps >= 10 and tips == 0:
             guess = input('Would like a better tip? (Yes/No): ').lower()
             if guess in ('yes', 'y'):
-                hint = 'Even' if chosen_number % 2 == 0 else 'Odd'
+                hint = 'Even' if secret_number % 2 == 0 else 'Odd'
                 print(f'The number that i\'m thinking is {hint}')
             tips += 1
 
