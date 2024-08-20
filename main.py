@@ -6,14 +6,14 @@
 from random import SystemRandom
 
 def main():
-    random = SystemRandom()
-    print('∎∎∎  WELCOME TO THE GUESSING GAME!! ∎∎∎')
-    print('\n\n')
-    guess = input('PRESS ( ENTER ) TO START')
-    chosen_number = random.randint(0, 100)
     attemps = 0
+    random = SystemRandom()
+    chosen_number = random.randint(0, 100)
+    print('∎∎∎  WELCOME TO THE GUESSING GAME!! ∎∎∎')
+    print('\n')
+    print('Try to guess the number I\'m thinking, between 0-100')
     while True:
-        guess = input('I\'m thiking in a number between 0-100, type your guess: ')
+        guess = input('Type your guess: ')
         if guess.lower() in ('exit', 'quit'):
             print('Right, see you next time!!')
             break
@@ -25,13 +25,13 @@ def main():
         elif int(guess) > chosen_number:
             print('Wrong, the number is LESSER!')
         else:
-            print('C O N G R A T S !!')
-            print(f'Total attemps: {attemps}')
+            print(f'CONGRATS !! You Guessed it in {attemps} Attemps!!')
             guess = input('Would you like to play again? (Yes/No): ')
             if guess.lower() in ('yes', 'y'):
                 continue
             else:
                 break
+
         attemps += 1
 
 if __name__ == '__main__':
