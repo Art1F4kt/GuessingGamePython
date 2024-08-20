@@ -6,6 +6,7 @@
 from random import SystemRandom
 
 def main():
+    tips = 0
     attemps = 0
     random = SystemRandom()
     chosen_number = random.randint(0, 100)
@@ -27,6 +28,7 @@ def main():
                 ])
             )
             continue
+        
         if int(guess) < chosen_number:
             print(random.choice([
                 'Nop, the number is Higher!!',
@@ -50,6 +52,13 @@ def main():
                 continue
             else:
                 break
+        
+        if attemps >= 10 and tips == 0:
+            guess = input('Would like a better tip? (Yes/No): ').lower()
+            if guess in ('yes', 'y'):
+                hint = 'Even' if chosen_number % 2 == 0 else 'Odd'
+                print(f'The number that i\'m thinking is {hint}')
+            tips += 1
 
         attemps += 1
 
