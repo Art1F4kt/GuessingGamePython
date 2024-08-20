@@ -8,8 +8,9 @@ from random import randint
 def main():
     print('∎∎∎  WELCOME TO THE GUESSING GAME!! ∎∎∎')
     print('\n\n')
-    _ = input('PRESS ( ENTER ) TO START')
+    guess = input('PRESS ( ENTER ) TO START')
     chosen_number = randint(0, 100)
+    attemps = 0
     while True:
         guess = input('I\'m thiking in a number between 0-100, type your guess: ')
         if guess.lower() in ('exit', 'quit'):
@@ -24,11 +25,13 @@ def main():
             print('Wrong, the number is LESSER!')
         else:
             print('C O N G R A T S !!')
+            print(f'Total attemps: {attemps}')
             guess = input('Would you like to play again? (Yes/No): ')
             if guess.lower() in ('yes', 'y'):
                 continue
             else:
                 break
+        attemps += 1
 
 if __name__ == '__main__':
     main()
