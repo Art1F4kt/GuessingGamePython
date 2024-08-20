@@ -18,14 +18,30 @@ def main():
             print('Right, see you next time!!')
             break
         if not guess.isdigit():
-            print('I told you to write number only, not crazy things man!')
+            # Adding some type of randomness in the prhases to make the game less bored
+            print(
+                random.choice([
+                    'Type a valid number...Please', 
+                    'Be more careful, when typing numbers so that letters don\'t come together',
+                    'I asked a number, not a crazy message!'
+                ])
+            )
             continue
         if int(guess) < chosen_number:
-            print('Wrong, The number is GREATER!')
+            print(random.choice([
+                'Nop, the number is Higher!!',
+                'It is close! The number is Greater',
+                'Almost, the number is Greater than that'
+            ]))
         elif int(guess) > chosen_number:
-            print('Wrong, the number is LESSER!')
+            print(random.choice([
+                'Nah, the number is Lower!! Haha!',
+                'It passed by barely! The number is Lesser',
+                'Almost, the number is Lesser than that'
+            ]))
         else:
-            print(f'CONGRATS !! You Guessed it in {attemps} Attemps!!')
+            congrats = random.choice(['CONGRATS', 'WELL DONE', 'AMAZING'])
+            print(f'{congrats}!! You Guessed it in {attemps} Attemps!!')
             guess = input('Would you like to play again? (Yes/No): ')
             if guess.lower() in ('yes', 'y'):
                 continue
