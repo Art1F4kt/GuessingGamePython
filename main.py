@@ -3,13 +3,14 @@
 # Author: Art1F4kt
 # Description: A simple Guessing Game in Python
 
-from random import randint
+from random import SystemRandom
 
 def main():
+    random = SystemRandom()
     print('∎∎∎  WELCOME TO THE GUESSING GAME!! ∎∎∎')
     print('\n\n')
     guess = input('PRESS ( ENTER ) TO START')
-    chosen_number = randint(0, 100)
+    chosen_number = random.randint(0, 100)
     attemps = 0
     while True:
         guess = input('I\'m thiking in a number between 0-100, type your guess: ')
