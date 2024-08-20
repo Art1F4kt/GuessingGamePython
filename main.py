@@ -44,6 +44,9 @@ def main():
             print(f'{congrats}!! You Guessed it in {attemps} Attemps!!')
             guess = input('Would you like to play again? (Yes/No): ')
             if guess.lower() in ('yes', 'y'):
+                attemps = 0
+                chosen_number = random.randint(0, 100)
+                print('Try to guess the number I\'m thinking, between 0-100')
                 continue
             else:
                 break
